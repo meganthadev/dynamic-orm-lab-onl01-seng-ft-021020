@@ -71,4 +71,6 @@ class InteractiveRecord
     end
     row
   end
+  
+  
 end   
