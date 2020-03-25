@@ -59,5 +59,16 @@ class InteractiveRecord
     test
   end
   
-  
+  def self.find_by(attribute)
+    row = nil
+    attribute.each do |k, v|
+      sql = <<-SQL
+        SELECT *
+        FROM #{self.table_name}
+        WHERE #{k.to_s} = "#{v}"
+      SQL
+      row = DB[:conn].execute(sql) # gives a row back
+    end
+    row
+  end
 end   
