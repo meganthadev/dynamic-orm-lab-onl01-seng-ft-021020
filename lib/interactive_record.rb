@@ -51,6 +51,9 @@ class InteractiveRecord
     DB[:conn].execute(sql)
   end
   
-  
+  def self.find_by(attribute_hash)
+   sql = "SELECT * FROM #{self.table_name} WHERE #{self.attrs_as_args(attribute_hash)[0]} = '#{self.values_as_args(attribute_hash)[0]}'"
+   DB[:conn].execute(sql)
+  end
   
 end   
